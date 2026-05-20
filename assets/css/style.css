@@ -1,0 +1,306 @@
+/* ==========================================================================
+   1. RESET & UTILITY GLOBAL
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f3f4f6;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #1e293b;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+.container {
+    max-width: 72rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Kunci utama agar soal nomor lain tersembunyi sebelum dipanggil JS */
+.hidden { 
+    display: none !important; 
+}
+
+.alert-error {
+    background-color: #fee2e2;
+    border-left: 4px solid #ef4444;
+    color: #b91c1c;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   2. STYLING LOGIN PAGE (Centered Card)
+   ========================================================================== */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f3f4f6;
+}
+
+.login-card {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    border: 1px solid #e5e7eb;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    max-width: 24rem;
+    width: 100%;
+    margin: auto;
+}
+
+.login-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2563eb; /* Disamakan dengan warna text-blue-600 bawaan login asli */
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* ==========================================================================
+   3. STRUKTUR UTAMA DASHBOARD ADMIN & CRUD
+   ========================================================================== */
+.admin-header {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.admin-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.admin-nav-links a {
+    color: #475569;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-left: 1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+}
+
+.admin-nav-links a:hover, .admin-nav-links a.active {
+    background-color: #f1f5f9;
+    color: #2563eb;
+}
+
+.admin-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   4. TABEL DATA ADMIN (RESPONSIVE & MODERN)
+   ========================================================================== */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+}
+
+.table-admin {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.875rem;
+}
+
+.table-admin th {
+    background-color: #f8fafc;
+    color: #475569;
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+    border-bottom: 2px solid #e5e7eb;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.table-admin td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    color: #334155;
+    vertical-align: middle;
+}
+
+.table-admin tr:hover {
+    background-color: #f8fafc;
+}
+
+/* ==========================================================================
+   5. FORM INPUT & ELEMENT UI ADMIN / LOGIN
+   ========================================================================== */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+}
+
+.form-input, .form-select {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: #1f2937;
+    background-color: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus, .form-select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Grid Layout untuk Form/Dashboard Admin */
+.admin-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .admin-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .admin-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .admin-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* Widget Card Statistik Dashboard */
+.widget-card {
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+}
+.widget-val { font-size: 1.75rem; font-weight: 700; color: #1e293b; margin-top: 0.25rem; }
+.widget-title { font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #64748b; }
+
+/* ==========================================================================
+   6. UTILLITAS BUTTONS & BADGES
+   ========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.btn-primary { background-color: #2563eb; color: #ffffff; }
+.btn-primary:hover { background-color: #1d4ed8; }
+
+.btn-success { background-color: #10b981; color: #ffffff; }
+.btn-success:hover { background-color: #059669; }
+
+.btn-danger { background-color: #ef4444; color: #ffffff; }
+.btn-danger:hover { background-color: #dc2626; }
+
+.btn-toggle {
+    background-color: #f3f4f6;
+    color: #374151;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.btn-toggle:hover { background-color: #e5e7eb; }
+
+.btn-prev { background-color: #475569; color: #ffffff; padding: 0.625rem 1.5rem; border-radius: 0.75rem;}
+.btn-prev:hover:not(:disabled) { background-color: #334155; }
+
+.btn-next { background-color: #2563eb; color: #ffffff; padding: 0.625rem 2rem; border-radius: 0.75rem;}
+.btn-next:hover:not(:disabled) { background-color: #1d4ed8; }
+
+.btn-submit { background-color: #059669; color: #ffffff; padding: 0.625rem 2rem; border-radius: 0.75rem;}
+.btn-submit:hover { background-color: #047857; }
+
+button:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.btn-sm { padding: 0.25rem 0.5rem; font-size: 0.75rem; border-radius: 0.25rem; }
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.badge-success { background-color: #d1fae5; color: #065f46; }
+.badge-danger { background-color: #fee2e2; color: #991b1b; }
+.badge-info { background-color: #e0f2fe; color: #0369a1; }
+
+/* ==========================================================================
+   7. STYLING KARTU UTAMA SOAL (HALAMAN TES SISWA)
+   ========================================================================== */
+.card-soal {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    border: 1px solid #e5e7eb;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 100%;
+}
+.header-baris { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 1rem; margin-bottom: 1rem; border-bottom: 1px solid #f3f4f6; }
+.meta-peserta { font-size: 0.75rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; margin-bottom: 0.125rem; }
+.nama-peserta { font-size: 0.875rem; font-weight: 700; color: #374151; display: flex; align-items: center; gap: 0.25rem; }
+.judul-nomor { font-size: 1.5rem; font-weight: 700; color: #2563eb; margin-top: 0.5rem; }
+.teks-pernyataan { color: #1e293b; font-weight: 500; font-size: 1.125rem; line-height: 1.625; margin-bottom: 1.5rem; padding-top: 0.5rem; }
+.grid-opsi { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+@media (min-width: 640px) { .grid-opsi { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.label-opsi { display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem; border: 1px solid #e5e7eb; border-radius: 0.75rem; cursor: pointer; transition: background-color 0.2s; font-size: 0.875rem; color: #334155; font-weight: 600; }
+.label-opsi:hover { background-color: #f8fafc; }
+.radio-input { height: 1rem; width: 1rem; color: #2563eb; cursor: pointer; }
+
+.footer-baris { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; margin-top: 1.5rem; border-top: 1px solid #f3f4f6; }
+
+.panel-navigasi { background-color: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; padding: 1.5rem; margin-top: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); width: 100%; }
+.judul-nav { font-weight: 700; color: #1e293b; font-size: 0.875rem; margin-bottom: 1rem; }
+.flex-wrap-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+.nav-btn { width: 2.25rem; height: 2.25rem; font-size: 0.75rem; font-weight: 700; border: 1px solid #d1d5db; border-radius: 0.5rem; background-color: #ffffff; color: #334155; font-family: monospace; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
+.nav-active { box-shadow: 0 0 0 4px #93c5fd; background-color: #eff6ff; color: #1d4ed8; border-color: #3b82f6; }
+.nav-answered { background-color: #10b981 !important; color: #ffffff !important; border-color: #059669 !important; }
+.flex-petunjuk { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.75rem; font-weight: 500; color: #6b7280; border-top: 1px solid #f3f4f6; padding-top: 0.75rem; }
+.status-item { display: flex; align-items: center; gap: 0.5rem; }
+.kotak-status { width: 0.75rem; height: 0.75rem; border-radius: 0.125rem; }
