@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPMB 2026 | Sistem Penerimaan Murid Baru</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #0284c7;
+            --accent-color: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #f3f4f6;
+            --bg-light: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0f172a 100%);
+            color: white;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background-color: var(--accent-color);
+            color: #0f172a;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .nav-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.3);
+        }
+
+        .nav-btn:hover {
+            background-color: #0369a1;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px -1px rgba(2, 132, 199, 0.4);
+        }
+
+        .hero {
+            padding: 80px 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at top right, rgba(2, 132, 199, 0.05), transparent), 
+                        radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.03), transparent);
+        }
+
+        .badge {
+            background-color: rgba(245, 158, 11, 0.15);
+            color: #d97706;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            color: #0f172a;
+            margin-bottom: 16px;
+            max-width: 800px;
+            line-height: 1.2;
+        }
+
+        .hero h2 span {
+            color: var(--secondary-color);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #0f172a;
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #eab308;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        .features {
+            padding: 60px 10%;
+            background-color: white;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .feature-card {
+            background-color: var(--bg-light);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #f1f5f9;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #0f172a;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+            border-top: 1px solid #1e293b;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            .cta-group {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            .btn-primary, .btn-secondary {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-icon">M</div>
+            <div class="logo-text">
+                <h1>SPMB SISTEM</h1>
+                <p>Portal Penerimaan Siswa Baru</p>
+            </div>
+        </div>
+        <a href="login.php" class="nav-btn">Masuk / Login</a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <span class="badge">Pendaftaran Tahun Ajaran 2026/2027 Telah Dibuka!</span>
+            <h2>Raih Masa Depan Gemilang di <span>Sekolah Vokasi Pilihan</span></h2>
+            <p>Sistem Seleksi Penerimaan Murid Baru yang transparan, akuntabel, dan berbasis digital untuk kemudahan pendaftaran calon talenta hebat.</p>
+            
+            <div class="cta-group">
+                <a href="login.php" class="btn-primary">Mulai Pendaftaran</a>
+                <a href="#alur" class="btn-secondary">Lihat Alur Seleksi</a>
+            </div>
+        </section>
+
+        <section class="features" id="alur">
+            <div class="feature-card">
+                <span class="feature-icon">📝</span>
+                <h3>1. Registrasi Akun</h3>
+                <p>Buat akun pendaftaran Anda melalui halaman login sistem dengan mengisi data dasar yang valid.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📂</span>
+                <h3>2. Isian Dokumen</h3>
+                <p>Unggah berkas persyaratan seperti KK, NISN, nilai rapor, atau sertifikat prestasi pendukung.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🎯</span>
+                <h3>3. Pemetaan Kompetensi</h3>
+                <p>Ikuti rangkaian asesmen pemetaan minat, bakat, serta kompetensi bidang keahlian pilihan.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📢</span>
+                <h3>4. Pengumuman Hasil</h3>
+                <p>Pantau status kelulusan dan hasil seleksi akhir secara real-time langsung dari dashboard Anda.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sistem Informasi SPMB SMK. Seluruh Hak Cipta Dilindungi.</p>
+    </footer>
+
+</body>
+</html>
